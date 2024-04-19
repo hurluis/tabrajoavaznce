@@ -1,0 +1,27 @@
+<InterfazScreen>:
+    GridLayout:
+        cols: 1
+        padding: 20
+        spacing: 10
+        
+        GridLayout:
+            id: tablero_grid
+            cols: 10  # Define el número de columnas del tablero oculto
+            size_hint_y: None
+            height: self.minimum_height  # Ajusta la altura del GridLayout para adaptarse al contenido
+
+            # Crea un botón por cada posición del tablero oculto
+            for fila in root.tablero_oculto:  # Recorre cada fila del tablero oculto
+                for valor_celda in fila:  # Recorre cada valor de celda en la fila
+                    Button:
+                        text: valor_celda  # Utiliza el valor de celda para mostrar en el botón
+                        size_hint_y: None
+                        height: 50  # Tamaño del botón
+                        disabled: True  # Deshabilita la interacción con el botón
+                        background_normal: ''  # Elimina el fondo por defecto del botón
+
+        Button:
+            text: "Generar Tablero"
+            on_press: root.go_to_tablero_screen()  # Acción al presionar el botón
+            size_hint_y: None
+            height: 50
